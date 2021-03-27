@@ -53,7 +53,7 @@ function show_task() {
     }
     let html = "";
     arr.forEach((element, index) => {
-        html += `<div class="not-complete">
+        html += `<div class="not-complete animate__animated animate__backInLeft">
         <span class="spn">${index + 1}</span>
     <p>${element}</p>
     <div class="icon">
@@ -121,7 +121,7 @@ function show_done_task() {
     let html1 = "";
     if (arr1 != null) {
         arr1.forEach((element, index) => {
-            html1 += `<div class="complete1">
+            html1 += `<div class="complete1 animate__animated animate__backInRight ">
             <span class="spn">${index + 1}</span>
         <p>${[element]}</p>
         <div class="icon">

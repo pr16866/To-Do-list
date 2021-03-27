@@ -7,19 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="style.css">
+   
+  />
 
 </head>
 
 <body>
-    <div class="searchbox">
+    <div class="searchbox animate__animated animate__backInLeft">
         <i class="fa fa-search"></i>
         <input type="text" name="#" id="search" placeholder="Search Your To Do">
         <button id="search-btn">search</button>
     </div>
     <div class="container">
 
-        <h1>To Do list</h1>
+        <h1 class="animate__animated animate__infinite	infinite animate__heartBeat">To Do list</h1>
 
         <div class="input">
             <input type="text" name="#" id="task" placeholder="Write a Task">
@@ -28,7 +33,7 @@
             <button id="dltbtn">Dellet All</button>    
         </div>
         <h1 class="task_name" id="c">Not Completed</h1><br>
-        <div class="complete" id="task_view">
+        <div class="complete " id="task_view">
 
         </div>
         <br>
