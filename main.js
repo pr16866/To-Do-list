@@ -1,6 +1,6 @@
 let c1 = document.getElementById("c1");
 let c = document.getElementById("c");
-
+let condition=false;
 show_task();
 
 let save_task = document.getElementById("save_task");
@@ -9,7 +9,11 @@ let add_task = document.getElementById("add_task");
 
 
 task.addEventListener("keyup",function(e){
-    if(e.key=="Enter"){
+    if((e.key=="Enter")&&condition){
+        save();
+    
+    }
+    else if(e.key=="Enter"){
         add_task1();
     }
     
@@ -73,8 +77,7 @@ function delet(index) {
     
     storage_value = localStorage.getItem("key");
     arr = JSON.parse(storage_value);
-   console.log(arr.splice(index, 1)); 
-
+   arr.splice(index, 1); 
     localStorage.setItem("key", JSON.stringify(arr));
     if (arr.length == 0) {
 
@@ -143,8 +146,12 @@ function edit(index) {
     task.value = arr[index];
     localStorage.setItem("key", JSON.stringify(arr));
     var1 = index;
+    condition=true;
 }
-save_task.addEventListener("click", function () {
+// |||||||||| fuction for save the edited task ||||||||||||
+save_task.addEventListener("click",save); 
+ function save() {
+      
     storage_value = localStorage.getItem("key");
     arr = JSON.parse(storage_value);
     arr[var1] = task.value;
@@ -152,20 +159,16 @@ save_task.addEventListener("click", function () {
     save_task.style.display = "none";
     add_task.style.display = "block";
     task.value = "";
+    condition=false;
     show_task();
-});
+};
 
 // ||||||||||||||||| search to do ||||||||||||
 
 let search = document.getElementById("search");
 search.addEventListener("input", function () {
-  
-
     let input_val = search.value.toUpperCase();
     let notcomplete = document.getElementsByClassName("not-complete");
-    //   console.log(notcomplete[0].getElementsByTagName("p")[0]);
-
-
     Array.from(notcomplete).forEach(function (element,index){
        let searchtext=element.getElementsByTagName("p")[0].innerText.toUpperCase(); 
            if(searchtext.includes(input_val)){
@@ -185,4 +188,20 @@ c.style.display = "none";
 c1.style.display = "none";
 show_task();
 show_done_task();
-});
+})
+// ||||||||||||||||| search to do for completed task ||||||||||||
+search.addEventListener("input",function(){
+   let complete1=document.querySelectorAll(".complete1");
+   let inputval=search.value.toUpperCase();
+   Array.from(complete1).forEach((element)=>{
+     let p=element.querySelector("p").innerText.toUpperCase();  
+  
+     if(p.includes(inputval)){
+        element.style.display="flex";
+     }
+     else{
+         element.style.display="none";
+    }
+   })
+
+})
